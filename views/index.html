@@ -1,0 +1,73 @@
+<html>
+<head>
+    <style>
+        span {
+            display: inline-block;
+            min-width: 160px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <select @change="getWeather" v-model="citySelected">
+        <option v-for="city in cityList" :value="city">{{city}}</option>
+    </select>
+    <div>
+        <div>
+            <span>City:</span><span>{{weather.city}}</span>
+        </div>
+        <div>
+            <span>Update time:</span><span>{{weather.update_time}}</span>
+        </div>
+        <div>
+            <span>Weather:</span><span>{{weather.weather}}</span>
+        </div>
+        <div>
+            <span>Temperature:</span><span>{{weather.temperature}}</span>
+        </div>
+        <div>
+            <span>Wind:</span><span>{{weather.wind}}</span>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data() {
+            return {
+                citySelected: '',
+                cityList: [],
+                weather: {}
+            }
+        },
+        created() {
+            this.getCityList();
+        },
+        methods: {
+            getCityList() {
+                axios.post('/city_list').then(resp => {
+                    if (resp.data.status_code === 0) {
+                        this.cityList = resp.data.data;
+                    } else {
+                        console.log(resp);
+                    }
+                });
+            },
+            getWeather() {
+                let data = new FormData();
+                data.append('city', this.citySelected);
+                axios.post('/weather', data).then(resp => {
+                    if (resp.data.status_code === 0) {
+                        this.weather = resp.data.data;
+                    } else {
+                        console.log(resp);
+                    }
+                });
+            }
+        }
+    });
+</script>
+</body>
+</html>
