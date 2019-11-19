@@ -11,3 +11,5 @@ then go to the project folder, build and run it.
     go build -o weather
     ./weather
     
+**screenshots**
+![screenshots](screenshots.jpg)
