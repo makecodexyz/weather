@@ -10,10 +10,10 @@
 <body>
 <div id="app">
     <select @change="getWeather" v-model="citySelected">
-        <option  :value="-1">please select city</option>
+        <option :value="-1">please select city</option>
         <option v-for="city in cityList" :value="city.id">{{city.name}}</option>
     </select>
-    <hr />
+    <hr/>
     <div>
         <div>
             <span>City:</span><span>{{weather.city}}</span>
@@ -57,12 +57,12 @@
                     }
                 });
             },
-            clear(){
+            clear() {
                 this.weather = {};
             },
             getWeather() {
                 console.log(this.citySelected);
-                if(this.citySelected === -1){
+                if (this.citySelected === -1) {
                     this.clear();
                     return;
                 }
