@@ -26,5 +26,5 @@ I can't connect any weather api, so i make a fake one.
 ## deploy
 
 When I push code to github, the Webhooks will push a message to my server.
-On my server, a nodejs app hosted, it will pull && build source code from github 
+On my server, a python app hosted, it will pull && build source code from github 
 when received a message pushed from github.
