@@ -10,6 +10,7 @@
 <body>
 <div id="app">
     <select @change="getWeather" v-model="citySelected">
+        <option  :value="-1">please select city</option>
         <option v-for="city in cityList" :value="city.id">{{city.name}}</option>
     </select>
     <hr />
@@ -38,7 +39,7 @@
         el: '#app',
         data() {
             return {
-                citySelected: '',
+                citySelected: '-1',
                 cityList: [],
                 weather: {}
             }
@@ -56,7 +57,15 @@
                     }
                 });
             },
+            clear(){
+                this.weather = {};
+            },
             getWeather() {
+                console.log(this.citySelected);
+                if(this.citySelected === -1){
+                    this.clear();
+                    return;
+                }
                 let data = new FormData();
                 data.append('city', this.citySelected);
                 axios.post('/weather', data).then(resp => {
