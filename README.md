@@ -43,3 +43,11 @@ when received a message pushed from github.
     
     if __name__ == "__main__":
         app.run()
+
+
+build.sh
+![build.sh](screenshots/build1.jpg)
+
+command to run weather app
+
+    ProRunMode=prod pm2 start weather
