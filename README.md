@@ -12,7 +12,7 @@ then go to the project folder, build and run it.
     ./weather
     
 **screenshots**
-![screenshots](screenshots.jpg)
+![screenshots](screenshots/web.jpg)
 
 
 *finally*
@@ -21,3 +21,10 @@ I moved the city data into a city.json file. you need modify the json file path 
 the conf/app.conf to your own path.
 
 I can't connect any weather api, so i make a fake one.
+
+
+## deploy
+
+When I push code to github, the Webhooks will push a message to my server.
+On my server, a nodejs app hosted, it will pull && build source code from github 
+when received a message pushed from github.
