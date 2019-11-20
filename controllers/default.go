@@ -1,8 +1,10 @@
 package controllers
 
 import (
+	"encoding/json"
 	"github.com/astaxie/beego"
-	"strings"
+	"github.com/astaxie/beego/logs"
+	"io/ioutil"
 	"time"
 	"weather/models"
 )
@@ -16,7 +18,7 @@ func (c *MainController) Get() {
 }
 
 func (c *MainController) GetCityList() {
-	cityList := strings.Split(beego.AppConfig.String("cities"), ",")
+	cityList := getCityList()
 	result := models.ApiResult{StatusCode: 0, StatusMsg: "ok", Data: cityList}
 	c.Data["json"] = result
 	c.ServeJSON()
@@ -39,4 +41,19 @@ func fakeWeatherAPI(city string) *models.CityWeather {
 		Wind:        "Wind " + city,
 	}
 	return weather
+}
+
+func getCityList() []models.City {
+	content, err := ioutil.ReadFile(beego.AppConfig.String("cities"))
+	if err != nil {
+		logs.Error(err)
+		return []models.City{}
+	}
+	var cityList []models.City
+	err = json.Unmarshal(content, &cityList)
+	if err != nil {
+		logs.Error(err)
+		return []models.City{}
+	}
+	return cityList
 }

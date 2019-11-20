@@ -10,7 +10,7 @@
 <body>
 <div id="app">
     <select @change="getWeather" v-model="citySelected">
-        <option v-for="city in cityList" :value="city">{{city}}</option>
+        <option v-for="city in cityList" :value="city.id">{{city.name}}</option>
     </select>
     <div>
         <div>

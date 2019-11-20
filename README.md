@@ -13,3 +13,11 @@ then go to the project folder, build and run it.
     
 **screenshots**
 ![screenshots](screenshots.jpg)
+
+
+*finally*
+
+I moved the city data into a city.json file. you need modify the json file path from
+the conf/app.conf to your own path.
+
+I can't connect any weather api, so i make a fake one.
