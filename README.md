@@ -28,3 +28,18 @@ I can't connect any weather api, so i make a fake one.
 When I push code to github, the Webhooks will push a message to my server.
 On my server, a python app hosted, it will pull && build source code from github 
 when received a message pushed from github.
+
+    from flask import Flask, Request
+    
+    app = Flask(__name__)
+    
+    
+    @app.route("/webhook",methods=['GET','POST'])
+    def index():
+        import subprocess
+        subprocess.run(["/home/ubuntu/build.sh",""])
+        return "ok"
+    
+    
+    if __name__ == "__main__":
+        app.run()
