@@ -3,11 +3,12 @@ jobs:
   build:
     docker:
       - image: circleci/golang:1.10.4
-      - run:
-          command: mkdir -p /goprojects/src
     environment:
       GOPATH: /goprojects
     steps:
+      - run:
+          command: 
+            mkdir -p /goprojects/src
       - checkout
       - run:
           command: go get github.com/astaxie/beego
