@@ -9,6 +9,8 @@ jobs:
     steps:
       - checkout
       - run:
+          command: ls ~
+      - run:
           command: go get github.com/astaxie/beego
       - run:
           command: go build
