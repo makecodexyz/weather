@@ -4,8 +4,8 @@ jobs:
     docker:
       - image: circleci/golang:1.10.4
     environment:
-      GOPATH: ~/goprojects
-    working_directory: ~/goprojects
+      GOPATH: /goprojects
+    working_directory: /goprojects
     steps:
       - checkout
       - run:
