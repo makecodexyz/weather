@@ -11,7 +11,7 @@ jobs:
       - run:
           command: go get github.com/astaxie/beego
       - run:
-          command: go build
+          command: cd weather && go build
 workflows:
   version: 2
   workflow:
