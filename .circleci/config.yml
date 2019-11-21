@@ -1,0 +1,10 @@
+version: 2.1
+jobs: 
+  build:
+    docker:
+      - image: circleci/golang:1.10.4
+    working_directory: /go/src/github.com/makecodexyz/weather
+    steps:
+      - checkout
+      - run: go get github.com/astaxie/beego
+      - run: make
