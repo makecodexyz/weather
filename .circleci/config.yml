@@ -5,7 +5,7 @@ jobs:
       - image: circleci/golang:1.10.4
     environment:
       GOPATH: /home/circleci/project/go
-    working_directory: /home/circleci/project/go
+    working_directory: /home/circleci/project/go/src/weather
     steps:
       - checkout
       - run:
@@ -15,7 +15,7 @@ jobs:
       - run:
           command: ls -l
       - run:
-          command: cd weather && go build
+          command: go build
 workflows:
   version: 2
   workflow:
