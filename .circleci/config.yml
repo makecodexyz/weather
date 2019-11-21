@@ -5,17 +5,14 @@ jobs:
       - image: circleci/golang:1.10.4
     environment:
       GOPATH: /home/circleci/project/go
+      ProRunMode: build
     working_directory: /home/circleci/project/go/src/weather
     steps:
       - checkout
       - run:
           command: go get github.com/astaxie/beego
       - run:
-          command: pwd
-      - run:
-          command: ls -l
-      - run:
-          command: go build
+          command: go build -o weather
 workflows:
   version: 2
   workflow:
