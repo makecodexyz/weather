@@ -9,7 +9,7 @@ jobs:
     - run:
         command: go get github.com/astaxie/beego
     - run:
-        command: make
+        command: go build
 workflows:
   version: 2
   workflow:
