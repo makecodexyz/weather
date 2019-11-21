@@ -11,6 +11,8 @@ jobs:
       - run:
           command: go get github.com/astaxie/beego
       - run:
+          command: pwd
+      - run:
           command: ls -l
       - run:
           command: cd weather && go build
