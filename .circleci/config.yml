@@ -1,10 +1,23 @@
-version: 2.1
-jobs: 
+version: 2
+jobs:
   build:
     docker:
       - image: circleci/golang:1.10.4
-    working_directory: /go/src/github.com/makecodexyz/weather
+    environment:
+      GOPATH: /home/circleci/project/go
+    working_directory: /home/circleci/project/go/src/weather
     steps:
       - checkout
-      - run: go get github.com/astaxie/beego
-      - run: make
+      - run:
+          command: go get github.com/astaxie/beego
+      - run:
+          command: pwd
+      - run:
+          command: ls -l
+      - run:
+          command: go build
+workflows:
+  version: 2
+  workflow:
+    jobs:
+    - build
