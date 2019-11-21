@@ -5,9 +5,8 @@ jobs:
       - image: circleci/golang:1.10.4
     environment:
       GOPATH: /home/circleci/project/go
+    working_directory: /home/circleci/project/go
     steps:
-      - run:
-          command: mkdir go
       - checkout
       - run:
           command: go get github.com/astaxie/beego
