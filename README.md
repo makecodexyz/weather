@@ -1,4 +1,5 @@
 # weather
+[![CircleCI](https://circleci.com/gh/makecodexyz/weather/tree/master.svg?style=svg)](https://circleci.com/gh/makecodexyz/weather/tree/master)
 
 I use a open source framework beego to build this project, so we need get it first,
 run the command below to get it. I didn't use go mod here.
